@@ -5,24 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="https://unpkg.com/vue@3.0.2"></script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div id="app">
+      <a  :href="url">Youtube</a>
       <div v-if="showBooks">
-        <p>{{title}} - {{author}} - {{age}}</p>
+        <ul>
+          <li v-for="book in books" :class="{ fav: book.isFav}">
+            <img :src="book.img" :alt="book.title"/>
+            <h3>{{book.title}}</h3>
+            <p>{{book.author}}</p>
+          </li>
+        </ul>
       </div>
       <button @click="toggleShowBooks">
         <span v-if="showBooks">Hide Books</span>
         <span v-else>Show Books</span>
       </button>
-      <br>
-      
-      <div class="box" @mouseover="handleEvent($event, 5)">Mouseover (enter)</div>
+      <br />
+
+      <!-- <div class="box" @mouseover="handleEvent($event, 5)">
+        Mouseover (enter)
+      </div>
       <div class="box" @mouseleave="handleEvent">Mouseleave</div>
       <div class="box" @dblclick="handleEvent">doubleclick</div>
-      <div class="box"></div>
-      
+      <div class="box" @mousemove="handleMousemove">Position - {{x}} {{y}}</div> -->
+
       <!-- <button @click="age++">Increase age</button>
       <button @click="age--">Decrease age</button>
       <button @click="changeTitle('Oathbringer')">Change title!</button> -->
