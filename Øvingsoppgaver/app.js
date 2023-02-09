@@ -31,6 +31,9 @@ const app = Vue.createApp({
     toggleShowBooks() {
       this.showBooks = !this.showBooks;
     },
+    toggleFav(book){
+      book.isFav = !book.isFav
+    }
     // ,
     // handleEvent(x, data) {
     //   console.log(x, x.type);
@@ -47,6 +50,11 @@ const app = Vue.createApp({
     //   this.title = title;
     // },
   },
+  computed:{
+    filteredBooks(){
+      return this.books.filter((book) => book.isFav)
+    }
+  }
 });
 
 app.mount("#app");
