@@ -1,6 +1,24 @@
 <template>
   <h1>{{ title }}</h1>
-  <Modal />
+  <p>Welcome ...</p>
+  <teleport to="#modals" v-if="showModal">
+    <Modal theme="sale" @close="toggleModal">
+      <template v-slot:links>
+        <a href="#">Sign up now!</a>
+        <a href="#">More info</a>
+      </template>
+      <h1>Ninja Giveaway!</h1>
+      <p>Grab your ninja swag for half price!</p>
+    </Modal>
+  </teleport>
+  <teleport to="#modals" v-if="showModalTwo">
+    <Modal @close="toggleModalTwo">
+      <h1>Sign up for the newsletter</h1>
+      <p>For updates and promocodes!</p>
+    </Modal>
+  </teleport>
+  <button @click="toggleModal">Open Modal</button>
+  <button @click="toggleModalTwo">Open Modal Two</button>
 </template>
 
 <script>
@@ -12,13 +30,24 @@ export default {
   data() {
     return {
       title: "My First Vue App",
+      showModal: false,
+      showModalTwo: false,
     };
+  },
+  methods: {
+    toggleModal() {
+      this.showModal = !this.showModal;
+    },
+    toggleModalTwo() {
+      this.showModalTwo = !this.showModalTwo;
+    },
   },
 };
 </script>
 
 <style>
-#app {
+#app,
+#modals {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
