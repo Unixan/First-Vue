@@ -1,9 +1,12 @@
-<template></template>
+<template>
+  <SignupForm />
+</template>
 
 <script>
+import SignupForm from "./components/SignupForm.vue";
 export default {
   name: "App",
-  components: {},
+  components: { SignupForm },
 };
 </script>
 
@@ -17,7 +20,7 @@ export default {
   margin-top: 60px;
 }
 
-body{
+body {
   margin: 0;
   background: #eee;
 }
